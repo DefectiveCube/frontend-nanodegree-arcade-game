@@ -17,11 +17,6 @@ var vertexPositionAttribute;
 var textureCoordAttribute;
 var perspectiveMatrix;
 
-//
-// start
-//
-// Called when the canvas is created to get the ball rolling.
-//
 function start() {
   canvas = document.getElementById("canvas");
 
@@ -202,8 +197,7 @@ function initBuffers() {
   
   // Now send the element array to GL
   
-  gl.bufferData(gl.ELEMENT_ARRAY_BUFFER,
-      new Uint16Array(cubeVertexIndices), gl.STATIC_DRAW);
+  gl.bufferData(gl.ELEMENT_ARRAY_BUFFER, new Uint16Array(cubeVertexIndices), gl.STATIC_DRAW);
 }
 
 //
@@ -221,10 +215,9 @@ function initTextures() {
 }
 
 function handleTextureLoaded(image, texture) {
-  console.log("handleTextureLoaded, image = " + image);
+  //console.log("handleTextureLoaded, image = " + image);
   gl.bindTexture(gl.TEXTURE_2D, texture);
-  gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA,
-        gl.UNSIGNED_BYTE, image);
+  gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, image);
   gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR);
   gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR_MIPMAP_NEAREST);
   gl.generateMipmap(gl.TEXTURE_2D);
@@ -246,7 +239,7 @@ function drawScene() {
   // ratio of 640:480, and we only want to see objects between 0.1 units
   // and 100 units away from the camera.
   
-  perspectiveMatrix = makePerspective(45, 640.0/480.0, 0.1, 100.0);
+  perspectiveMatrix = makePerspective(settings.screen.FOV, settings.screen.width / settings.screen.height, 0.1, 100.0);
   
   // Set the drawing position to the "identity" point, which is
   // the center of the scene.
@@ -333,7 +326,6 @@ function initShaders() {
   gl.enableVertexAttribArray(textureCoordAttribute);
 }
 
-//
 // getShader
 //
 // Loads a shader program by scouring the current document,
@@ -393,9 +385,7 @@ function getShader(gl, id) {
   return shader;
 }
 
-//
 // Matrix utility functions
-//
 
 function loadIdentity() {
   mvMatrix = Matrix.I(4);
@@ -444,9 +434,7 @@ function mvRotate(angle, v) {
   multMatrix(m);
 }
 
-//
 // Matrix utility functions
-//
 
 function loadIdentity() {
   mvMatrix = Matrix.I(4);
