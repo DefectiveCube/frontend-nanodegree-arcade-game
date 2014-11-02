@@ -11,8 +11,18 @@ var levels = {
 
 var settings = {
 	screen : {
+		IsFullScreen: false,
 		FOV : 45,
-		height: 768,
-		width: 1024
+		height: 900,
+		width: 1440
+	}
+	render : {
+		bg : {
+			r : 1.0,
+			g : 1.0,
+			b : 1.0,
+			a : 1.0
+		}
+		interval : 15
 	}
 };

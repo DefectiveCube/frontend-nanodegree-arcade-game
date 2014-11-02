@@ -10,9 +10,21 @@
             padding: 0;
         }
 
-        li {
+        canvas {
+            width: 100%;
+            height: 100%;
+        }
+
+nav a{
+    color: #fff;
+    text-decoration: none;
+}
+        nav > ul {
             position: absolute;
-            background-color: #fff;
+        }
+
+        li {
+            /*background-color: #fff;*/
         }
         .overlay {
             position: absolute;
@@ -27,6 +39,7 @@
 <div>
     <nav>
         <ul>
+            <li><a id="fullscreenButton" href="#">New</a></li>
             <li><a href="#">Fullscreen</a></li>
         </ul>
     </nav>

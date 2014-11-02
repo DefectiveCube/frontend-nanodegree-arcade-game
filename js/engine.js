@@ -20,42 +20,22 @@ var perspectiveMatrix;
 function start() {
   canvas = document.getElementById("canvas");
 
-  initWebGL(canvas);      // Initialize the GL context
-  
-  // Only continue if WebGL is available and working
-  
+  initWebGL(canvas);
+    
   if (gl) {
-    gl.clearColor(0.0, 0.0, 0.0, 1.0); 
+    gl.clearColor(render.bg.r, render.bg.g, render.bg.b, render.bg.a);
     gl.clearDepth(1.0);                 // Clear everything
     gl.enable(gl.DEPTH_TEST);           // Enable depth testing
     gl.depthFunc(gl.LEQUAL);            // Near things obscure far things
     
-    // Initialize the shaders; this is where all the lighting for the
-    // vertices and so forth is established.
-    
     initShaders();
-    
-    // Here's where we call the routine that builds all the objects
-    // we'll be drawing.
-    
-    initBuffers();
-    
-    // Next, load and set up the textures we'll be using.
-    
+    initBuffers();    
     initTextures();
-    
-    // Set up to draw the scene periodically.
-    
-    setInterval(drawScene, 15);
+        
+    setInterval(drawScene, render.interval);
   }
 }
 
-//
-// initWebGL
-//
-// Initialize WebGL, returning the GL context or null if
-// WebGL isn't available or could not be initialized.
-//
 function initWebGL() {
   gl = null;
   
@@ -63,25 +43,15 @@ function initWebGL() {
     gl = canvas.getContext("experimental-webgl");
   }
   catch(e) {
+    console.log(e);
   }
-  
-  // If we don't have a GL context, give up now
-  
+    
   if (!gl) {
     alert("Unable to initialize WebGL. Your browser may not support it.");
   }
 }
 
-//
-// initBuffers
-//
-// Initialize the buffers we'll need. For this demo, we just have
-// one object -- a simple two-dimensional cube.
-//
 function initBuffers() {
-  
-  // Create a buffer for the cube's vertices.
-  
   cubeVerticesBuffer = gl.createBuffer();
   
   // Select the cubeVerticesBuffer as the one to apply vertex
