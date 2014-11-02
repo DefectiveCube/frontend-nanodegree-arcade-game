@@ -1,8 +1,11 @@
 var Enemy = function() {
     this.path = {
-        type : linear
+        ampiltude: 0.0,
+        offset: 0.0,
+        period: 1.0,
+        speed: 10
     };
-    this.speed = 10;    // units per frame
+
     this.sprite = 'images/enemy-bug.png';
 }
 
@@ -16,11 +19,19 @@ Enemy.prototype.update = function(dt) {
 
 // Draw the enemy on the screen, required method for game
 Enemy.prototype.render = function() {
-    ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+    //ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 }
 
-var Mutant = function() {
-    this.path
+var SineBug = function() {
+    this.path = {};
+}
+
+var SquareBug = function() {
+    this.path = {};
+}
+
+var SawtoothBug = function() {
+    this.path = {};
 }
 
 // Now write your own player class
