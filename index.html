@@ -3,10 +3,73 @@
 <head>
     <title>Effective JavaScript: Frogger</title>
     <link rel="stylesheet" href="css/style.css">
+
+    <style>
+    	:target + div {
+    		display: block;
+    	}
+
+    	:not(:target) + div {
+    		display: none;
+    	}
+    </style>
 </head>
-<body>
+<body onload="start();">
+
+<!-- Welcome Screen -->
+<a id="welcome">.</a>
+<div>
+	<h1>Welcome</h1>
+	<p>Objective: Reach the other side</p>
+
+	<p>Bugs will run horizontally</p>
+	<p>Note: Bugs will decrease your health by one heart</p>
+
+	<p>Rocks will fall vertically</p>
+	<p>Note: Rocks will instantely kill</p>
+
+	<a href="#game">Start</a>
+</div>
+
+<!-- Game Screen -->
+<a id="game">.</a>
+<div>
+	<canvas id="canvas" width="1024" height="768">Your browser doesn't support WebGL</canvas>
+</div>
+
+<!-- Score Screen -->
+<a id="score">.</a>
+<div>
+	<p>Final Score</p>
+</div>
+
+
+	<!--<script src="//cdnjs.cloudflare.com/ajax/libs/three.js/r68/three.min.js"></script>
     <script src="js/resources.js"></script>
-    <script src="js/app.js"></script>
+    <script src="js/app.js"></script>-->
+<script id="shader-fs" type="x-shader/x-fragment">
+      varying highp vec2 vTextureCoord;
+      
+      uniform sampler2D uSampler;
+      
+      void main(void) {
+        gl_FragColor = texture2D(uSampler, vec2(vTextureCoord.s, vTextureCoord.t));
+      }
+    </script>
+
+
+<script id="shader-vs" type="x-shader/x-vertex">
+  attribute vec3 aVertexPosition;
+
+  uniform mat4 uMVMatrix;
+  uniform mat4 uPMatrix;
+  
+  void main(void) {
+    gl_Position = uPMatrix * uMVMatrix * vec4(aVertexPosition, 1.0);
+  }
+    </script>
+    <script src="js/sylvester.js"></script>
+    <script src="js/glUtils.js"></script>
     <script src="js/engine.js"></script>
 </body>
 </html>

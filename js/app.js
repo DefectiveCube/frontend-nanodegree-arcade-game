@@ -24,8 +24,13 @@ Enemy.prototype.render = function() {
 // Now write your own player class
 // This class requires an update(), render() and
 // a handleInput() method.
+var Player = function() {
+    this.sprite = 'images/char-boy.png';
+}
 
-
+var Obstacle = function() {
+    this.sprite = 'images/rock.png';
+}
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
@@ -44,3 +49,14 @@ document.addEventListener('keyup', function(e) {
 
     player.handleInput(allowedKeys[e.keyCode]);
 });
+
+var levels = {
+    first : {
+        rows = 5,
+        cols = 5
+    },
+    second : {
+        row = 7,
+        cols = 7
+    }
+}
