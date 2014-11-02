@@ -5,42 +5,33 @@
     <link rel="stylesheet" href="css/style.css">
 
     <style>
-    	:target + div {
-    		display: block;
-    	}
+        * {
+            margin: 0;
+            padding: 0;
+        }
 
-    	:not(:target) + div {
-    		display: none;
-    	}
+        li {
+            position: absolute;
+            background-color: #fff;
+        }
+        .overlay {
+            position: absolute;
+            width: auto;
+            background: white;
+            border: 1px solid #000;
+        }
     </style>
 </head>
 <body onload="start();">
 
-<!-- Welcome Screen -->
-<a id="welcome">.</a>
 <div>
-	<h1>Welcome</h1>
-	<p>Objective: Reach the other side</p>
+    <nav>
+        <ul>
+            <li><a href="#">Fullscreen</a></li>
+        </ul>
+    </nav>
 
-	<p>Bugs will run horizontally</p>
-	<p>Note: Bugs will decrease your health by one heart</p>
-
-	<p>Rocks will fall vertically</p>
-	<p>Note: Rocks will instantely kill</p>
-
-	<a href="#game">Start</a>
-</div>
-
-<!-- Game Screen -->
-<a id="game">.</a>
-<div>
-	<canvas id="canvas" width="1024" height="768">Your browser doesn't support WebGL</canvas>
-</div>
-
-<!-- Score Screen -->
-<a id="score">.</a>
-<div>
-	<p>Final Score</p>
+	<canvas id="canvas" width="640" height="480" style="width: 100%;">Your browser doesn't support WebGL</canvas>
 </div>
 
 
