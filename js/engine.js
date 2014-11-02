@@ -23,7 +23,7 @@ function start() {
   initWebGL(canvas);
     
   if (gl) {
-    gl.clearColor(render.bg.r, render.bg.g, render.bg.b, render.bg.a);
+    gl.clearColor(settings.render.bg.r, settings.render.bg.g, settings.render.bg.b, settings.render.bg.a);
     gl.clearDepth(1.0);                 // Clear everything
     gl.enable(gl.DEPTH_TEST);           // Enable depth testing
     gl.depthFunc(gl.LEQUAL);            // Near things obscure far things
@@ -32,7 +32,7 @@ function start() {
     initBuffers();    
     initTextures();
         
-    setInterval(drawScene, render.interval);
+    setInterval(drawScene, settings.render.interval);
   }
 }
 

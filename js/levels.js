@@ -26,7 +26,7 @@ var settings = {
 			g : 1.0,
 			b : 1.0,
 			a : 1.0
-		}
+		},
 		interval : 15
 	}
 };
